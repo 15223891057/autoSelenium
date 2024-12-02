@@ -136,7 +136,8 @@ public class Swap {
             return;
         }
         //随机选择一个token
-        int tokenIndex = new Random().nextInt(3);
+//        int tokenIndex = new Random().nextInt(3);
+        int tokenIndex = 1;
         tokens.get(tokenIndex).click();
         Util.RandomSleep(10,15);
 

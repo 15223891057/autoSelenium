@@ -18,8 +18,8 @@ public class DoBalance {
         List<JSONObject> list = Util.getAll();
 
         int totalTasks = list.size();  // 总任务数量
-        int maxThreads = 5;    // 最大并发线程数量
-        double permitsPerSecond = 0.5;  // 每2秒1个请求，相当于每秒0.5个请求
+        int maxThreads = 3;    // 最大并发线程数量
+        double permitsPerSecond = 0.25;  // 每2秒1个请求，相当于每秒0.5个请求
 
         // 创建一个具有固定线程数的线程池
         ExecutorService executorService = Executors.newFixedThreadPool(maxThreads);

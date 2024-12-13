@@ -22,7 +22,7 @@ public class Test {
 
     public static void main(String[] args) throws InterruptedException, IOException {
 
-        int[] browser = {95, 93, 97, 48};
+        int[] browser = {111, 85, 59, 22, 80, 32, 56, 70, 54, 52, 110, 10, 105};
 
         for (int i: browser) {
             System.out.println( i + " : " + JSONUtil.parseObj(HttpUtil.get("http://local.adspower.net:50325/api/v1/browser/start?serial_number="+i)));

@@ -1,7 +1,8 @@
-package com.x.autoselenium.hemi;
+package com.x.autoselenium.humanity;
 
 import cn.hutool.json.JSONObject;
 import com.google.common.util.concurrent.RateLimiter;
+import com.x.autoselenium.hemi.Swap;
 import com.x.autoselenium.log.Log;
 import com.x.autoselenium.utils.Util;
 
@@ -11,7 +12,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Semaphore;
 
-public class DoSwap {
+public class DoDaily {
     public static void main(String[] args) throws InterruptedException {
         List<JSONObject> list = Util.getAll();
 
@@ -49,12 +50,12 @@ public class DoSwap {
                     // 通过RateLimiter来控制每2秒一个请求
                     rateLimiter.acquire();
                     //业务
-                    Swap.hemiSwap(jsonObject);
+                    Daily.claimDailyReward(jsonObject);
 
                 } catch (Exception e) {
                     // ANSI转义序列开启红色文本
                     System.out.print("\033[31m");
-                    System.out.println(jsonObject.getStr("serial_number") + "的线程被中断了");
+                    System.out.println(jsonObject.getStr("serial_number") + "的线程被中断了，代理信息： " + jsonObject.getStr("ip_country"));
                     System.out.print("\033[0m");
                     e.printStackTrace();
                     Thread.currentThread().interrupt();
@@ -71,7 +72,7 @@ public class DoSwap {
         // 关闭线程池，等待所有任务完成
         executorService.shutdown();
 
-        System.out.println("成功"+Log.logs.size()+"个 ：" + Log.logs);
+        System.out.println("成功"+ Log.logs.size()+"个 ：" + Log.logs);
 
         List<String> fails = new ArrayList<>();
 

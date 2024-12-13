@@ -137,8 +137,8 @@ public class Swap {
         }
         //随机选择一个token
 //        int tokenIndex = new Random().nextInt(3);
-        int tokenIndex = 1;
-        tokens.get(tokenIndex).click();
+        int[] tokenIndex = {0,2};
+        tokens.get(tokenIndex[new Random().nextInt(2)]).click();
         Util.RandomSleep(10,15);
 
         //检测是否出现了Warning
@@ -152,36 +152,31 @@ public class Swap {
         //这里休眠10-20秒
         Util.RandomSleep(10,20);
 
-        //如果是选择的WETH
-        if (tokenIndex == 1){
-            browser.findElement(By.xpath("//button[@class='sc-aXZVg hCFFB Button__BaseButton-sc-4a2dca96-1 Button__ButtonPrimary-sc-4a2dca96-2 kVRhnV Dsaqa']")).click();
-        }else{
-            //点击swap
-            browser.findElement(By.id("swap-button")).click();
+        //点击swap
+        browser.findElement(By.id("swap-button")).click();
+        Util.RandomSleep(3,5);
+
+        //检测是否出现了price update警告
+        List<WebElement> priceUpdates = browser.findElements(By.xpath("//button[@class='sc-aXZVg bbWEFp Button__BaseButton-sc-4a2dca96-1 Button__ButtonPrimary-sc-4a2dca96-2 Button__SmallButtonPrimary-sc-4a2dca96-3 kVRhnV Dsaqa cGfmIY']"));
+        if (!priceUpdates.isEmpty()){
+            //点击accept
+            priceUpdates.get(0).click();
+            //这里等待1秒钟
+            Util.RandomSleep(1,1);
+        }
+
+        //点击confirm swap
+        browser.findElement(By.id("confirm-swap-or-send")).click();
+        Util.RandomSleep(3,5);
+
+        //检测是否出现了try again警告
+        List<WebElement> tryAgains = browser.findElements(By.xpath("//button[@class='sc-aXZVg bbWEFp Button__BaseButton-sc-4a2dca96-1 Button__ButtonPrimary-sc-4a2dca96-2 kVRhnV Dsaqa']"));
+        //如果出现了try again警告
+        if (tryAgains.size()==2){
+            tryAgains.get(1).click();
             Util.RandomSleep(3,5);
-
-            //检测是否出现了price update警告
-            List<WebElement> priceUpdates = browser.findElements(By.xpath("//button[@class='sc-aXZVg bbWEFp Button__BaseButton-sc-4a2dca96-1 Button__ButtonPrimary-sc-4a2dca96-2 Button__SmallButtonPrimary-sc-4a2dca96-3 kVRhnV Dsaqa cGfmIY']"));
-            if (!priceUpdates.isEmpty()){
-                //点击accept
-                priceUpdates.get(0).click();
-                //这里等待1秒钟
-                Util.RandomSleep(1,1);
-            }
-
             //点击confirm swap
             browser.findElement(By.id("confirm-swap-or-send")).click();
-            Util.RandomSleep(3,5);
-
-            //检测是否出现了try again警告
-            List<WebElement> tryAgains = browser.findElements(By.xpath("//button[@class='sc-aXZVg bbWEFp Button__BaseButton-sc-4a2dca96-1 Button__ButtonPrimary-sc-4a2dca96-2 kVRhnV Dsaqa']"));
-            //如果出现了try again警告
-            if (tryAgains.size()==2){
-                tryAgains.get(1).click();
-                Util.RandomSleep(3,5);
-                //点击confirm swap
-                browser.findElement(By.id("confirm-swap-or-send")).click();
-            }
         }
 
 

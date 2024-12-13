@@ -86,7 +86,7 @@ public class DoCapsule {
                 //关闭浏览器
                 Util.stopBrowser(jsonObject);
                 //任务跑完休眠个3-5分钟
-                Util.RandomSleep(60,120);
+                Util.RandomSleep(60,80);
             }
 
         }

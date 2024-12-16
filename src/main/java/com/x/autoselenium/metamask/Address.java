@@ -8,6 +8,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Address {
     public static void getAddress(JSONObject jsonObject) throws InterruptedException, IOException {
@@ -22,7 +24,7 @@ public class Address {
         Util.CloseAllTabs(browser);
 
         //登录小狐狸并切换到hemi网络
-        Util.loginMetaMask(browser, Constant.NETWORK_HEMISEPOLIA);
+        Util.loginMetaMask(browser, null);
         //这里等待个几秒钟
         Util.RandomSleep(5,10);
 
@@ -37,6 +39,15 @@ public class Address {
         String address = browser.findElement(By.xpath("//p[@class='mm-box mm-text qr-code__address-segments mm-text--body-md mm-box--margin-bottom-4 mm-box--color-text-default']")).getText().replace("\n", " ");
 
         String sn = jsonObject.getStr("serial_number");
+
+        Map<String,String> map = new HashMap<>();
+
+        map.put("sn",sn);
+        map.put("address",address);
+
+        Log.list.add(map);
+
+
         if (sn.length()==1){
             sn = "  " + sn;
         }else if (sn.length()==2){

@@ -1,5 +1,6 @@
 package com.x.autoselenium.metamask;
 
+import cn.hutool.json.JSONArray;
 import cn.hutool.json.JSONObject;
 import com.google.common.util.concurrent.RateLimiter;
 import com.x.autoselenium.log.Log;
@@ -15,8 +16,10 @@ public class DoAddress {
     public static void main(String[] args) throws InterruptedException {
         List<JSONObject> list = Util.getAll();
 
+
+
         int totalTasks = list.size();  // 总任务数量
-        int maxThreads = 3;    // 最大并发线程数量
+        int maxThreads = 1;    // 最大并发线程数量
         double permitsPerSecond = 0.5;  // 每2秒1个请求，相当于每秒0.5个请求
 
         // 创建一个具有固定线程数的线程池
@@ -61,6 +64,9 @@ public class DoAddress {
         // 关闭线程池，等待所有任务完成
         executorService.shutdown();
 
+
+        Thread.sleep(30000);
+
         System.out.println("成功"+Log.logs.size()+"个 ：" + Log.logs);
 
         List<String> fails = new ArrayList<>();
@@ -76,6 +82,9 @@ public class DoAddress {
         for (String s: Log.logs){
             System.out.println(s);
         }
+
+
+        System.out.println(new JSONArray(Log.list));
 
     }
 }

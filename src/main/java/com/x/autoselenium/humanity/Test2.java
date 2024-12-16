@@ -3,15 +3,21 @@ package com.x.autoselenium.humanity;
 import cn.hutool.json.JSONObject;
 import com.x.autoselenium.utils.Util;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class Test {
+public class Test2 {
     public static void main(String[] args) throws InterruptedException {
         List<JSONObject> list = Util.getAll();
+        List<String> countries = new ArrayList<>();
         for (JSONObject obj : list) {
-            Util.updateProxy(obj);
-            Thread.sleep(1000);
+            if (countries.contains(obj.getStr("ip_country"))){
+                continue;
+            }
+            countries.add(obj.getStr("ip_country"));
         }
+
+        System.out.println(countries);
 
     }
 }

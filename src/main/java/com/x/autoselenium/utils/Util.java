@@ -65,8 +65,8 @@ public class Util {
 
         String user_id = jsonObject.getStr("user_id");
         String ip_country = jsonObject.getStr("ip_country");
-//        String proxy_user = "23095475-zone-custom-region-"+ip_country+"-sessid-"+Util.generateRandomString(11)+"-sessTime-60";
-        String proxy_user = "23095475-zone-custom-region-"+ip_country;
+        String proxy_user = "23095475-zone-custom-region-hk-sessid-"+Util.generateRandomString(11)+"-sessTime-60";
+//        String proxy_user = "23095475-zone-custom-region-"+ip_country;
 //        System.out.println(proxy_user);
 
         JSONObject user_proxy_config = new JSONObject();

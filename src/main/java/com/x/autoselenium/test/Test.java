@@ -33,16 +33,13 @@ public class Test {
     public static void main(String[] args) throws InterruptedException, IOException {
 
         List<JSONObject> list = new ArrayList<>();
-        list.add(new JSONObject().set("serial_number","12"));
-        list.add(new JSONObject().set("serial_number","44"));
-        list.add(new JSONObject().set("serial_number","45"));
+        list.add(new JSONObject().set("serial_number","19"));
+        list.add(new JSONObject().set("serial_number","85"));
+        list.add(new JSONObject().set("serial_number","94"));
+        list.add(new JSONObject().set("serial_number","48"));
+        list.add(new JSONObject().set("serial_number","65"));
         list.add(new JSONObject().set("serial_number","52"));
-        list.add(new JSONObject().set("serial_number","56"));
-        list.add(new JSONObject().set("serial_number","74"));
-        list.add(new JSONObject().set("serial_number","91"));
-        list.add(new JSONObject().set("serial_number","99"));
-        list.add(new JSONObject().set("serial_number","104"));
-        list.add(new JSONObject().set("serial_number","109"));
+        list.add(new JSONObject().set("serial_number","107"));
 
 
         int totalTasks = list.size();  // 总任务数量

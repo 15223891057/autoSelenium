@@ -54,7 +54,7 @@ public class DoSwap {
                 } catch (Exception e) {
                     // ANSI转义序列开启红色文本
                     System.out.print("\033[31m");
-                    System.out.println(jsonObject.getStr("serial_number") + "的线程被中断了");
+                    System.out.println(jsonObject.getStr("serial_number") + "的线程被中断了，代理信息： " + jsonObject.getStr("ip_country"));
                     System.out.print("\033[0m");
                     e.printStackTrace();
                     Thread.currentThread().interrupt();

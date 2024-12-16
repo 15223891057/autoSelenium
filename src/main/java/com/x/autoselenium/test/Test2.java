@@ -7,7 +7,7 @@ import java.nio.file.Paths;
 public class Test2 {
     public static void main(String[] args) {
 
-        String directoryPath = "C:/Users/admin/Desktop/test";
+        String directoryPath = "F:/.ADSPOWER_GLOBAL/cache";
 
         File directory = new File(directoryPath);
 
@@ -22,7 +22,7 @@ public class Test2 {
                     System.out.println(subDirectory.getName());
 
                     String oldName = subDirectory.getName();
-                    String newName = oldName.replace("huskj9","aaaaaaa");
+                    String newName = oldName.replace("huskj9","h19s2v1");
                     subDirectory.renameTo(new File(subDirectory.getParent() +"\\" + newName));
                 }
             }

@@ -65,7 +65,7 @@ public class Util {
 
         String user_id = jsonObject.getStr("user_id");
         String ip_country = jsonObject.getStr("ip_country");
-        String proxy_user = "23095475-zone-custom-region-hk-sessid-"+Util.generateRandomString(11)+"-sessTime-60";
+        String proxy_user = "23095475-zone-custom-region-"+ip_country+"-sessid-"+Util.generateRandomString(11)+"-sessTime-60";
 //        String proxy_user = "23095475-zone-custom-region-"+ip_country;
 //        System.out.println(proxy_user);
 
@@ -89,6 +89,8 @@ public class Util {
             System.out.println(jsonObject.getStr("serial_number")+" 更新代理信息失败");
             System.out.println("更新代理信息返回值 = " + resJson);
         }
+
+        System.out.println(jsonObject.getStr("serial_number")+" 更新代理信息成功");
     }
 
     /**

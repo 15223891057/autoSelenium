@@ -12,4 +12,8 @@ public class Log {
 
     public static List<Map<String,String>> list = new ArrayList<>();
 
+    public static List<String> success = new ArrayList<>();
+
+    public static List<String> fails = new ArrayList<>();
+
 }

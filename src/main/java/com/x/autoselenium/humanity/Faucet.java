@@ -40,7 +40,7 @@ public class Faucet {
         browser.findElement(By.xpath("//button[@class='button is-primary is-rounded']")).click();
         Util.RandomSleep(3,5);
 
-        Log.logs.add(serialNumber);
+        Log.success.add(serialNumber);
 
         // 关闭
         browser.close();

@@ -230,7 +230,7 @@ public class Swap {
         File src = browser.getScreenshotAs(OutputType.FILE);
         Util.takeScreenShot(src,"hemi swap " + jsonObject.getStr("serial_number") + ".png");
 
-        Log.logs.add(jsonObject.getStr("serial_number"));
+        Log.success.add(jsonObject.getStr("serial_number"));
 
         // 关闭
         browser.close();

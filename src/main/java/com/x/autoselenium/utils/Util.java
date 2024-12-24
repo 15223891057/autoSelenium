@@ -312,31 +312,6 @@ public class Util {
             }
         }
 
-        String js = "const customNetwork = {\n" +
-                "                    chainId: '0xB56C7', // 网络的链ID（16进制字符串）\n" +
-                "                    chainName: 'Hemi Sepolia', // 自定义网络的名称\n" +
-                "                    nativeCurrency: {\n" +
-                "                        name: 'ETH', // 自定义代币的名称\n" +
-                "                        symbol: 'ETH', // 自定义代币的符号\n" +
-                "                        decimals: 18, // 代币的小数位数\n" +
-                "                    },\n" +
-                "                    rpcUrls: ['https://testnet.rpc.hemi.network/rpc'], // RPC URL数组\n" +
-                "                    blockExplorerUrls: ['testnet.explorer.hemi.xyz'], // 区块浏览器URL数组\n" +
-                "                };\n" +
-                "\n" +
-                "                try {\n" +
-                "                    // 尝试向 MetaMask 添加自定义网络\n" +
-                "                    await ethereum.request({\n" +
-                "                        method: 'wallet_addEthereumChain',\n" +
-                "                        params: [customNetwork],\n" +
-                "                    });\n" +
-                "                    console.log('Hemi Sepolia 网络已成功添加！');\n" +
-                "                } catch (error) {\n" +
-                "                    console.error('添加网络失败', error);\n" +
-                "                }";
-        //添加网络
-        browser.executeScript(js);
-
         //获取当前网络
         String currentNetwork = browser.findElement(By.xpath("//span[@class='mm-box mm-text mm-text--body-sm mm-text--ellipsis mm-box--color-text-default']")).getText();
 

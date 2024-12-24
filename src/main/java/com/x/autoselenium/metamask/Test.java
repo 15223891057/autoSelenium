@@ -20,7 +20,7 @@ public class Test {
         JSONArray ja = JSONUtil.parseArray(str);
         System.out.println(ja.size());
 
-        List<JSONObject> list = Util.getAll();
+        List<JSONObject> list = Util.getAll(true);
 
 
         List<Map<String,String>> lll = new ArrayList<>();

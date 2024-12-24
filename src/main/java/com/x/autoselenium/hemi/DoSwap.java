@@ -15,7 +15,7 @@ import java.util.concurrent.Semaphore;
 
 public class DoSwap {
     public static void main(String[] args) throws InterruptedException {
-        List<JSONObject> list = Util.getAll();
+        List<JSONObject> list = Util.getAll(true);
 
         ThreadUtil.doThreadTasks(list, 3, 0.25, jsonObject -> Swap.hemiSwap(jsonObject));
 

@@ -11,9 +11,9 @@ import java.util.List;
 
 public class DoTrunOn {
     public static void main(String[] args) throws InterruptedException {
-        List<JSONObject> list = Util.getAll();
+        List<JSONObject> list = Util.getAll(true);
 
-        ThreadUtil.doThreadTasks(list, 3, 0.25, jsonObject -> TrunOnChains.trunOn(jsonObject));
+        ThreadUtil.doThreadTasks(list, 5, 0.25, jsonObject -> TrunOnChains.trunOn(jsonObject));
 
         System.out.println("成功 "+ Log.success.size()+" 个：" + Log.success);
         System.out.println("失败 "+Log.fails.size()+" ：" + Log.fails);
@@ -39,7 +39,7 @@ public class DoTrunOn {
         Log.fails.clear();
 
 
-        ThreadUtil.doThreadTasks(failedList, 3, 0.25, jsonObject -> TrunOnChains.trunOn(jsonObject));
+        ThreadUtil.doThreadTasks(failedList, 5, 0.25, jsonObject -> TrunOnChains.trunOn(jsonObject));
 
         System.out.println("成功 "+Log.success.size()+" 个：" + Log.success);
         System.out.println("失败 "+Log.fails.size()+" ：" + Log.fails);

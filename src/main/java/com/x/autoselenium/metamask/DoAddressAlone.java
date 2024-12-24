@@ -14,7 +14,7 @@ import java.util.concurrent.Semaphore;
 
 public class DoAddressAlone {
     public static void main(String[] args) throws InterruptedException {
-//        List<JSONObject> list = Util.getAll();
+//        List<JSONObject> list = Util.getAll(true);
 
         List<JSONObject> list = new ArrayList<>();
         list.add(new JSONObject().set("serial_number","107"));

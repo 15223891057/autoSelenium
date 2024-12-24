@@ -356,9 +356,9 @@ public class Util {
     /**
      * 获取所有浏览器信息并打乱顺序
      */
-    public static List<JSONObject> getAll(){
+    public static List<JSONObject> getAll(boolean shuffle){
         //获取所有浏览器信息
-        String users = HttpUtil.get("local.adspower.net:50325/api/v1/user/list?page_size=1000");
+        String users = HttpUtil.get("local.adspower.net:50325/api/v1/user/list?page_size=1000&user_sort={\"serial_number\":\"asc\"}");
         JSON usersJson = JSONUtil.parse(users);
         JSONArray usersJsonArray = JSONUtil.parseArray(JSONUtil.parse(usersJson.getByPath("data.list")));
         List<JSONObject> list = new ArrayList<>();
@@ -366,9 +366,25 @@ public class Util {
             list.add(usersJsonArray.getJSONObject(i));
             //list.add(groupJson.get("serial_number"));
         }
-        //Collections.addAll(list);
-        //打乱顺序
-        Collections.shuffle(list);
+        if (shuffle){
+            //打乱顺序
+            Collections.shuffle(list);
+        }
+        return list;
+    }
+
+    /**
+     * 获取所有已打开的浏览器信息并按照serial_number进行排序
+     */
+    public static List<JSONObject> getAllActive(){
+        //获取所有浏览器信息
+        String users = HttpUtil.get("local.adspower.net:50325/api/v1/browser/local-active");
+        JSON usersJson = JSONUtil.parse(users);
+        JSONArray usersJsonArray = JSONUtil.parseArray(JSONUtil.parse(usersJson.getByPath("data.list")));
+        List<JSONObject> list = new ArrayList<>();
+        for (int i = 0; i < usersJsonArray.size(); i++) {
+            list.add(usersJsonArray.getJSONObject(i));
+        }
         return list;
     }
 

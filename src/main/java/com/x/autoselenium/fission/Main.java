@@ -12,7 +12,7 @@ import java.util.concurrent.Semaphore;
 
 public class Main {
     public static void main(String[] args) throws InterruptedException {
-        List<JSONObject> list = Util.getAll();
+        List<JSONObject> list = Util.getAll(true);
 
         int totalTasks = list.size();  // 总任务数量
         int maxThreads = 5;    // 最大并发线程数量

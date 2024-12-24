@@ -8,7 +8,7 @@ import java.util.List;
 
 public class Test2 {
     public static void main(String[] args) throws InterruptedException {
-        List<JSONObject> list = Util.getAll();
+        List<JSONObject> list = Util.getAll(true);
         List<String> countries = new ArrayList<>();
         for (JSONObject obj : list) {
             if (countries.contains(obj.getStr("ip_country"))){

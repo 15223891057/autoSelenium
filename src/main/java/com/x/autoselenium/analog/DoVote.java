@@ -14,7 +14,7 @@ import java.util.concurrent.Semaphore;
 
 public class DoVote {
     public static void main(String[] args) throws InterruptedException {
-        List<JSONObject> list = Util.getAll();
+        List<JSONObject> list = Util.getAll(true);
 
         List<String> success = Util.checkFolder();
 

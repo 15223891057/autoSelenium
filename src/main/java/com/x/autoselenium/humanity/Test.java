@@ -10,7 +10,7 @@ import java.util.List;
 
 public class Test {
     public static void main(String[] args) throws InterruptedException {
-        List<JSONObject> list = Util.getAll();
+        List<JSONObject> list = Util.getAll(true);
         int[] targetA = {10,72,24,101,41,57,3,66};
 //        List<String> targetL = new ArrayList<>();
 //        for (int i:targetA) {

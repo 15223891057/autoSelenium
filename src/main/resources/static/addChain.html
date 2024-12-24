@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MetaMask Network Example</title>
+    <script>
+        async function addCustomNetwork() {
+            if (typeof window.ethereum !== 'undefined') {
+                // 检查 MetaMask 是否安装
+                const ethereum = window.ethereum;
+
+                // 自定义网络信息
+                const customNetwork = {
+                    chainId: '0xB56C7', // 网络的链ID（16进制字符串）
+                    chainName: 'Hemi Sepolia', // 自定义网络的名称
+                    nativeCurrency: {
+                        name: 'ETH', // 自定义代币的名称
+                        symbol: 'ETH', // 自定义代币的符号
+                        decimals: 18, // 代币的小数位数
+                    },
+                    rpcUrls: ['https://testnet.rpc.hemi.network/rpc'], // RPC URL数组
+                    blockExplorerUrls: ['testnet.explorer.hemi.xyz'], // 区块浏览器URL数组
+                };
+
+                try {
+                    // 尝试向 MetaMask 添加自定义网络
+                    await ethereum.request({
+                        method: 'wallet_addEthereumChain',
+                        params: [customNetwork],
+                    });
+                    console.log('Hemi Sepolia 网络已成功添加！');
+                } catch (error) {
+                    console.error('添加网络失败', error);
+                }
+            } else {
+                console.log('MetaMask 未安装！');
+            }
+        }
+
+        // 自动调用函数，在页面加载时添加网络
+        window.onload = () => {
+            addCustomNetwork();
+        };
+    </script>
+</head>
+<body>
+<h1>MetaMask 自定义网络添加示例</h1>
+<p>访问此页面时会自动尝试将 Hemi Sepolia 网络添加到 MetaMask。</p>
+</body>
+</html>

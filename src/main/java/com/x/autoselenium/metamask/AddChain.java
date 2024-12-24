@@ -1,6 +1,7 @@
 package com.x.autoselenium.metamask;
 
 import cn.hutool.json.JSONObject;
+import com.x.autoselenium.log.Log;
 import com.x.autoselenium.utils.Constant;
 import com.x.autoselenium.utils.Util;
 import org.openqa.selenium.By;
@@ -53,7 +54,7 @@ public class AddChain {
         //获取当前所有handles
         Set<String> windowHandles = browser.getWindowHandles();
 
-        browser.findElement(By.xpath("//a[@id='hemi']")).click();
+        browser.findElement(By.id("hemi")).click();
         Thread.sleep(3000);
 
         //获取当前所有handles
@@ -92,5 +93,7 @@ public class AddChain {
         }else{
             //System.out.println("=========小狐狸没能弹出=============");
         }
+
+        Log.success.add(jsonObject.getStr("serial_number"));
     }
 }

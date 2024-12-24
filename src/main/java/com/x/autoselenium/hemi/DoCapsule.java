@@ -67,11 +67,6 @@ public class DoCapsule {
         List<String> success = Util.checkFolder();
 
         for(JSONObject jsonObject:list){
-            //判断是否已经成功执行
-//            if (success.contains(jsonObject.getStr("serial_number"))){
-//                System.out.println(jsonObject.getStr("serial_number") + " 已经成功了，本次执行跳过");
-//                continue;
-//            }
             try {
                 //业务
                 Capsule.hemiCapsule(jsonObject);

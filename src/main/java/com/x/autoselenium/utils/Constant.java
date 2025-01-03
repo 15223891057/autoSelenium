@@ -11,4 +11,6 @@ public class Constant {
     public static String NETWORK_SEPOLIA = "Sepolia";
 
     public static String SCREENSHOT_FOLDER = "./screenshot";
+
+    public static String NETWORK_BASESEPOLIA = "Base Sepolia";
 }

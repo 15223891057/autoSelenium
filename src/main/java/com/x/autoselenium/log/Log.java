@@ -16,4 +16,8 @@ public class Log {
 
     public static List<String> fails = new ArrayList<>();
 
+    public static List<String> insufficientBalance = new ArrayList<>();
+
+    public static List<Map<String,String>> balanceIfo = new ArrayList<>();
+
 }

@@ -15,6 +15,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.*;
 
 public class Test {
@@ -22,12 +24,25 @@ public class Test {
 
     public static void main(String[] args) throws InterruptedException, IOException {
 
-        int[] browser = {111, 85, 59, 22, 80, 32, 56, 70, 54, 52, 110, 10, 105};
+        // 定义原始的int数组
+        int[] numbers = {89, 89, 89, 59, 108, 45, 45, 88, 88, 35, 35, 8, 8, 8};
 
-        for (int i: browser) {
-            System.out.println( i + " : " + JSONUtil.parseObj(HttpUtil.get("http://local.adspower.net:50325/api/v1/browser/start?serial_number="+i)));
-            Thread.sleep(2000);
+        // 使用Set去重
+        Set<Integer> set = new HashSet<>();
+        for (int number : numbers) {
+            set.add(number);
         }
+
+        // 将去重后的元素转换回数组
+        int[] uniqueNumbers = new int[set.size()];
+        int index = 0;
+        for (int number : set) {
+            uniqueNumbers[index++] = number;
+        }
+
+        // 输出去重后的结果
+        System.out.println("水不够了，需要领水: " + Arrays.toString(uniqueNumbers));
+        System.out.println(uniqueNumbers.length);
 
 
 

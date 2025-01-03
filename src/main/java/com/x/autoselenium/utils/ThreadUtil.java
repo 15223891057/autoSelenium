@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Semaphore;
+import java.util.concurrent.TimeUnit;
 
 public class ThreadUtil {
     public static void doThreadTasks(List<JSONObject> list,int maxThreads,double permitsPerSecond,ToRun toRun) throws InterruptedException {
@@ -48,8 +49,14 @@ public class ThreadUtil {
             });
         }
 
-        // 关闭线程池，等待所有任务完成
+        // 关闭线程池，不再接受新任务
         executorService.shutdown();
+
+        // 等待所有任务完成
+        if (!executorService.awaitTermination(120, TimeUnit.SECONDS)) {
+            System.out.println("Timeout occurred before tasks could finish");
+            executorService.shutdownNow();  // 如果超时，强制关闭任务
+        }
 
     }
 }

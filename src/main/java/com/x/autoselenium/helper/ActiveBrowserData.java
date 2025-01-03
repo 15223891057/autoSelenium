@@ -4,29 +4,11 @@ import cn.hutool.json.JSONObject;
 import com.x.autoselenium.utils.Util;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
-public class BrowserData {
+public class ActiveBrowserData {
     public static void main(String[] args) {
-        List<JSONObject> list = Util.getAll(false);
-        System.out.println(list);
-
-        int[] sns = {47,69,34,42,104,48,59,64,44,101,110,74,52,95,56,60};
-        // 将 int[] 转换为 List<Integer>
-        List<Integer> listS = Arrays.stream(sns)
-                .boxed()  // 将每个 int 转换为 Integer
-                .collect(Collectors.toList());
-
-        List<JSONObject> listT = new ArrayList<>();
-
-        for (JSONObject json : list) {
-            int serianNumber = json.getInt("serian_number");
-            if (listS.contains(serianNumber)){
-                listT.add(json);
-            }
-        }
+        List<JSONObject> list = Util.getAllActive();
 
         List<String> userIds = new ArrayList<>();
 
@@ -89,7 +71,7 @@ public class BrowserData {
 
         System.out.println("\n\n=================serialNumbers=================");
         for (String str:serialNumbers){
-            System.out.println(str);
+            System.out.print(str+",");
         }
 
 

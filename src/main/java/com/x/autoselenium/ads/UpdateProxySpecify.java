@@ -1,4 +1,4 @@
-package com.x.autoselenium.humanity;
+package com.x.autoselenium.ads;
 
 import cn.hutool.http.HttpUtil;
 import cn.hutool.json.JSONObject;
@@ -8,30 +8,30 @@ import com.x.autoselenium.utils.Util;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Test {
+public class UpdateProxySpecify {
     public static void main(String[] args) throws InterruptedException {
         List<JSONObject> list = Util.getAll(true);
-        int[] targetA = {23,34};
+        int[] targetA = {64, 33, 82, 84, 86};
         List<String> targetL = new ArrayList<>();
         for (int i:targetA) {
             targetL.add(String.valueOf(i));
         }
 
-        for (JSONObject obj : list) {
-            if (targetL.contains(obj.getStr("serial_number"))){
-                //先关闭浏览器
-                Util.stopBrowser(obj);
-                Thread.sleep(1000);
-            }
-        }
-
-        for (JSONObject obj : list) {
-            if (targetL.contains(obj.getStr("serial_number"))){
-                //修改代理
-                Util.updateProxy(obj);
-                Thread.sleep(1000);
-            }
-        }
+//        for (JSONObject obj : list) {
+//            if (targetL.contains(obj.getStr("serial_number"))){
+//                //先关闭浏览器
+//                Util.stopBrowser(obj);
+//                Thread.sleep(1000);
+//            }
+//        }
+//
+//        for (JSONObject obj : list) {
+//            if (targetL.contains(obj.getStr("serial_number"))){
+//                //修改代理
+//                Util.updateProxy(obj);
+//                Thread.sleep(1000);
+//            }
+//        }
 
         for (JSONObject obj : list) {
             if (targetL.contains(obj.getStr("serial_number"))){

@@ -137,8 +137,8 @@ public class Swap {
         }
         //随机选择一个token
 //        int tokenIndex = new Random().nextInt(3);
-        int[] tokenIndex = {0,2};
-        tokens.get(tokenIndex[new Random().nextInt(2)]).click();
+        int[] tokenIndex = {0};
+        tokens.get(0).click();
         Util.RandomSleep(10,15);
 
         //检测是否出现了Warning
@@ -227,8 +227,8 @@ public class Swap {
 
 
         //页面截图保存
-        File src = browser.getScreenshotAs(OutputType.FILE);
-        Util.takeScreenShot(src,"hemi swap " + jsonObject.getStr("serial_number") + ".png");
+//        File src = browser.getScreenshotAs(OutputType.FILE);
+//        Util.takeScreenShot(src,"hemi swap " + jsonObject.getStr("serial_number") + ".png");
 
         Log.success.add(jsonObject.getStr("serial_number"));
 

@@ -1,32 +1,23 @@
-package com.x.autoselenium.metamask;
+package com.x.autoselenium.plaza;
 
 import cn.hutool.json.JSONObject;
-import com.google.common.util.concurrent.RateLimiter;
+import com.x.autoselenium.hemi.Capsule;
 import com.x.autoselenium.humanity.Faucet;
 import com.x.autoselenium.log.Log;
 import com.x.autoselenium.utils.ThreadUtil;
 import com.x.autoselenium.utils.Util;
+import io.swagger.util.Json;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Semaphore;
 
-public class DoClear {
+public class DoPlazaDaily {
     public static void main(String[] args) throws InterruptedException {
         List<JSONObject> list = Util.getAll(true);
 
-        ThreadUtil.doThreadTasks(list, 5, 0.25, jsonObject -> {
-            try {
-                CleanHistory.cleanHistory(jsonObject);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        });
+        ThreadUtil.doThreadTasks(list, 3, 0.25, jsonObject -> PlazaDaily.daily(jsonObject));
 
-        System.out.println("成功 "+Log.success.size()+" 个：" + Log.success);
+        System.out.println("成功 "+ Log.success.size()+" 个：" + Log.success);
         System.out.println("失败 "+Log.fails.size()+" ：" + Log.fails);
 
         if (Log.fails.size()==0){
@@ -49,17 +40,10 @@ public class DoClear {
         Log.success.clear();
         Log.fails.clear();
 
-
-        ThreadUtil.doThreadTasks(failedList, 3, 0.25, jsonObject -> {
-            try {
-                CleanHistory.cleanHistory(jsonObject);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        });
+        ThreadUtil.doThreadTasks(failedList, 3, 0.25, jsonObject -> PlazaDaily.daily(jsonObject));
 
         System.out.println("成功 "+Log.success.size()+" 个：" + Log.success);
         System.out.println("失败 "+Log.fails.size()+" ：" + Log.fails);
-
+        System.out.println("需要领水 "+Log.insufficientBalance.size()+" ：" + Log.insufficientBalance);
     }
 }

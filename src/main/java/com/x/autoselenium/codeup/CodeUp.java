@@ -31,7 +31,7 @@ public class CodeUp {
         Util.CloseAllTabs(browser);
 
         //登录小狐狸并切换到arb网络
-        Util.loginMetaMask(browser, Constant.NETWORK_ARBITRUMONE);
+        Util.loginMetaMask(browser, null);
         //这里等待个几秒钟
         Util.RandomSleep(3,5);
 

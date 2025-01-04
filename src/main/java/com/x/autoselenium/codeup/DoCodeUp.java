@@ -9,7 +9,7 @@ import java.util.List;
 public class DoCodeUp {
     public static void main(String[] args) throws InterruptedException {
 
-        int[] targetA = {3,5,6,7,8,9,10,11,12,18};
+        int[] targetA = {3,5,6,7,8,9,10,11,12,18,117};
         List<JSONObject> list = Util.getAll(true);
 
         List<String> targetL = new ArrayList<>();
@@ -22,9 +22,18 @@ public class DoCodeUp {
             for (JSONObject obj : list) {
                 if (targetL.contains(obj.getStr("serial_number"))){
 
-                    CodeUp.doCodeUp(obj);
-                    //关闭浏览器
-                    Util.stopBrowser(obj);
+                    try{
+                        CodeUp.doCodeUp(obj);
+                    }catch (Exception e){
+                        System.out.println("程序异常，不用管");
+                        e.printStackTrace();
+                    }finally {
+                        //关闭浏览器
+                        Util.stopBrowser(obj);
+                    }
+
+
+
                 }
             }
             System.out.println("完成收菜，进入休眠");

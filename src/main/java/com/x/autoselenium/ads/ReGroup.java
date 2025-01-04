@@ -43,7 +43,7 @@ public class ReGroup {
         List<String> list = JSONUtil.toList(userIds, String.class);
         Collections.addAll(list);
         //打乱顺序
-        Collections.shuffle(list);
+//        Collections.shuffle(list);
         System.out.println(list);
 
         List<List<String>> groups_u = new ArrayList<>();

@@ -11,7 +11,7 @@ import java.util.List;
 public class UpdateProxySpecify {
     public static void main(String[] args) throws InterruptedException {
         List<JSONObject> list = Util.getAll(true);
-        int[] targetA = {64, 33, 82, 84, 86};
+        int[] targetA = {90, 57, 83, 103};
         List<String> targetL = new ArrayList<>();
         for (int i:targetA) {
             targetL.add(String.valueOf(i));

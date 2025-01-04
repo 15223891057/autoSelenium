@@ -16,6 +16,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.Duration;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.ThreadLocalRandom;
@@ -51,18 +53,19 @@ public class PlazaDaily {
         //创建新tab
         browser.switchTo().newWindow(WindowType.TAB);
 
-        // 访问
-        browser.get("https://testnet.plaza.finance/market/0x47129e886b44b5b8815e6471fcd7b31515d83242/checkout/buy/bond");
-        doBusiness(browser,metamaskTabHandle,serialNumber);
+        List<String> urls = new ArrayList<>();
+        urls.add("https://testnet.plaza.finance/market/0x47129e886b44b5b8815e6471fcd7b31515d83242/checkout/buy/bond");
+        urls.add("https://testnet.plaza.finance/market/0x47129e886b44b5b8815e6471fcd7b31515d83242/checkout/sell/bond");
+        urls.add("https://testnet.plaza.finance/market/0x47129e886b44b5b8815e6471fcd7b31515d83242/checkout/buy/leverage");
+        urls.add("https://testnet.plaza.finance/market/0x47129e886b44b5b8815e6471fcd7b31515d83242/checkout/sell/leverage");
+        //打乱顺序
+        Collections.shuffle(urls);
 
-        browser.get("https://testnet.plaza.finance/market/0x47129e886b44b5b8815e6471fcd7b31515d83242/checkout/sell/bond");
-        doBusiness(browser,metamaskTabHandle,serialNumber);
-
-        browser.get("https://testnet.plaza.finance/market/0x47129e886b44b5b8815e6471fcd7b31515d83242/checkout/buy/leverage");
-        doBusiness(browser,metamaskTabHandle,serialNumber);
-
-        browser.get("https://testnet.plaza.finance/market/0x47129e886b44b5b8815e6471fcd7b31515d83242/checkout/sell/leverage");
-        doBusiness(browser,metamaskTabHandle,serialNumber);
+        for (String url : urls) {
+            // 访问
+            browser.get(url);
+            doBusiness(browser,metamaskTabHandle,serialNumber);
+        }
 
         Log.success.add(serialNumber);
 

@@ -13,4 +13,8 @@ public class Constant {
     public static String SCREENSHOT_FOLDER = "./screenshot";
 
     public static String NETWORK_BASESEPOLIA = "Base Sepolia";
+
+    public static String NETWORK_ARBITRUMONE = "Arbitrum";
+
+
 }

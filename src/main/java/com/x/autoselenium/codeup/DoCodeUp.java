@@ -1,6 +1,7 @@
 package com.x.autoselenium.codeup;
 
 import cn.hutool.json.JSONObject;
+import com.x.autoselenium.utils.Tools;
 import com.x.autoselenium.utils.Util;
 
 import java.util.ArrayList;
@@ -18,14 +19,14 @@ public class DoCodeUp {
         }
 
         while (true){
-            System.out.println("开始收菜");
+            System.out.println(Tools.getTime() + " 开始收菜");
             for (JSONObject obj : list) {
                 if (targetL.contains(obj.getStr("serial_number"))){
 
                     try{
                         CodeUp.doCodeUp(obj);
                     }catch (Exception e){
-                        System.out.println("程序异常，不用管");
+                        System.out.println(Tools.getTime() + " 程序异常，不用管");
                         e.printStackTrace();
                     }finally {
                         //关闭浏览器
@@ -36,10 +37,10 @@ public class DoCodeUp {
 
                 }
             }
-            System.out.println("完成收菜，进入休眠");
+            System.out.println(Tools.getTime() + " 完成收菜，进入休眠");
             //每执行完一批就休眠1500秒
             Util.RandomSleep(1500,1501);
-            System.out.println("休眠结束");
+            System.out.println(Tools.getTime() + " 休眠结束");
         }
 
     }
